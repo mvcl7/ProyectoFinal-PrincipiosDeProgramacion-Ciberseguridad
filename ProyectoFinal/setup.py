@@ -2,6 +2,7 @@ import subprocess
 import sys
 import platform
 import shutil
+import os
 
 def verificar_pip():
     print("Verificando pip...")
@@ -30,13 +31,16 @@ def instalar_nmap_sistema():
         return
 
     if sistema == "Windows":
-        print("""
-  En Windows nmap debe instalarse manualmente:
-  1. Entrá a: https://nmap.org/download.html
-  2. Descargá el instalador 'Latest stable release self-installer'
-  3. Ejecutalo y seguí los pasos
-  4. Reiniciá la terminal y volvé a correr este setup.py
-        """)
+        instalador = os.path.join(os.path.dirname(__file__), "instaladores", "nmap-setup.exe")
+        if os.path.exists(instalador):
+            print("  Instalando nmap desde el instalador incluido...")
+            subprocess.run([instalador], check=True)
+            print("  nmap instalado. Reiniciá la terminal y volvé a correr setup.py para verificar.")
+        else:
+            print("""
+            Instalador no encontrado en la carpeta 'instaladores/'.
+            Descargalo manualmente desde: https://nmap.org/download.html
+            """)
 
     elif sistema == "Linux":
         print("  Instalando nmap con apt...")
