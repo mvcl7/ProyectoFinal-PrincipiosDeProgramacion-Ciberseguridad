@@ -1,5 +1,7 @@
 import shutil
 import sys
+import nmap
+nm = nmap.PortScanner()
 
 def verificar_dependencias():
     if not shutil.which("nmap"):
