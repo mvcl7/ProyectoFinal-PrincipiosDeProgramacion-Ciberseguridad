@@ -1,7 +1,9 @@
 import nmap
 nm = nmap.PortScanner()
 
-nm.scan('192.168.56.1', arguments='-A -sV --open -T4')
+iphost = str(input("Ingrese la dirección IP a escanear: "))
+
+nm.scan(f'{iphost}', arguments='-A -sV --open -T4')
 
 for host in nm.all_hosts():
     print(f"Nmap scan report for {host}")
