@@ -9,8 +9,8 @@ for host in nm.all_hosts():
     print(f"Nmap scan report for {host}")
     print(f"Host is {nm[host].state()}")
     print()
-    print(f"{'PORT':<10} {'STATE':<10} {'SERVICE':<15} {'PRODUCT':<20} {'VERSION'}")
-    print("-" * 70)
+    print(f"{'PORT':<10} {'STATE':<10} {'SERVICE':<15} {'PRODUCT':<35} {'VERSION'}")
+    print("=" * 100)
     
     for proto in nm[host].all_protocols():
         for puerto in nm[host][proto].keys():
@@ -18,4 +18,5 @@ for host in nm.all_hosts():
             nombre = nm[host][proto][puerto]['name']
             producto = nm[host][proto][puerto]['product']
             version = nm[host][proto][puerto]['version']
-            print(f"{str(puerto)+'/'+proto:<10} {estado:<10} {nombre:<15} {producto} {version}")
+            print(f"{str(puerto)+'/'+proto:<10} {estado:<10} {nombre:<15} {producto:<35} {version}")
+            print("-" * 100)
