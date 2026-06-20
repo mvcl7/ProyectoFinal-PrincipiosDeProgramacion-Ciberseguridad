@@ -34,7 +34,7 @@ def instalar_nmap_sistema():
         instalador = os.path.join(os.path.dirname(__file__), "instaladores", "nmap-setup.exe")
         if os.path.exists(instalador):
             print("  Instalando nmap desde el instalador incluido...")
-            subprocess.run([instalador], check=True)
+            subprocess.run(['powershell', 'Start-Process', instalador, '-Verb', 'RunAs', '-Wait'], check=True)
             print("  nmap instalado. Reiniciá la terminal y volvé a correr setup.py para verificar.")
         else:
             print("""
