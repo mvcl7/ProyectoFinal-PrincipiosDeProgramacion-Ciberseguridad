@@ -4,6 +4,7 @@ import os
 import webbrowser
 import santi
 import gaston
+import mati
 
 NMAP_URL = "https://nmap.org/download.html"
 NMAP_PATH_WINDOWS = r"C:\Program Files (x86)\Nmap"
@@ -59,7 +60,7 @@ def menu():
             case '1':
                 santi.ver_dispositivo()
             case '2':
-                print("\n  Esta opción está en desarrollo.")
+                mati.editar_puertos()
             case '3':
                 gaston.detectar_vulnerabilidades()
             case '4':
